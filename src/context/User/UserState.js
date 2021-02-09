@@ -15,11 +15,20 @@ const UserState = (props) => {
     const getUsers=async()=>{
         const resp=await axios.get('https://reqres.in/api/users');
         console.log(resp.data.data)
+        dispatch({
+            type:'GET_USERS',
+            payload:resp.data.data
+        })
+        
     }
 
     const getProfile=async(id)=>{
         const resp=await axios.get(`https://reqres.in/api/users/${id}`);
-        console.log(resp)
+        // console.log(resp)
+        dispatch({
+            type:'GET_PROFILE',
+            payload:resp.data.data
+        })
     }
 
     return(
